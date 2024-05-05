@@ -11,7 +11,7 @@ import SwiftUI
 struct TakeAttendanceIOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StudentAdd(textName: "")
         }
     }
 }
