@@ -27,6 +27,7 @@
 		8892E5122BE77973007488F2 /* StudentAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdd.swift; sourceTree = "<group>"; };
 		8892E5142BE81324007488F2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8892E5162BE814FB007488F2 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		88F28F612BE901040050BBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,14 +60,15 @@
 		888D7FD42BE6B3AE008C0FDF /* TakeAttendanceIOS */ = {
 			isa = PBXGroup;
 			children = (
+				88F28F612BE901040050BBAC /* Info.plist */,
 				888D7FD52BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift */,
 				888D7FD72BE6B3AE008C0FDF /* ContentView.swift */,
 				8864EFE82BE775C400239DF7 /* AddedStudent.swift */,
 				8892E5122BE77973007488F2 /* StudentAdd.swift */,
 				888D7FD92BE6B3AF008C0FDF /* Assets.xcassets */,
-				888D7FDB2BE6B3AF008C0FDF /* Preview Content */,
 				8892E5142BE81324007488F2 /* ViewModel.swift */,
 				8892E5162BE814FB007488F2 /* Enum.swift */,
+				888D7FDB2BE6B3AF008C0FDF /* Preview Content */,
 			);
 			path = TakeAttendanceIOS;
 			sourceTree = "<group>";
@@ -95,6 +97,8 @@
 			dependencies = (
 			);
 			name = TakeAttendanceIOS;
+			packageProductDependencies = (
+			);
 			productName = TakeAttendanceIOS;
 			productReference = 888D7FD22BE6B3AE008C0FDF /* TakeAttendanceIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +127,8 @@
 				Base,
 			);
 			mainGroup = 888D7FC92BE6B3AE008C0FDF;
+			packageReferences = (
+			);
 			productRefGroup = 888D7FD32BE6B3AE008C0FDF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,12 +291,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TakeAttendanceIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VLA2U4TVXS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TakeAttendanceIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,6 +311,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufaydin.TakeAttendanceIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,12 +323,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TakeAttendanceIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VLA2U4TVXS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TakeAttendanceIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +343,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufaydin.TakeAttendanceIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

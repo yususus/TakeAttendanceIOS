@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+
 struct StudentAdd: View {
     @State private var showCameraPicker = false
     @State private var capturedImage: UIImage? = nil
     @State var textName: String
+
+    @StateObject var sendData = SendData()
+    @StateObject var viewModel = StudentAddViewModel(apiURL: URL(string: "http://3.75.250.153:8000/uploadfile/1/")!)
+    
     var body: some View {
         VStack{
             HStack{
@@ -29,6 +34,8 @@ struct StudentAdd: View {
             
             Button(action: {
                            // action()
+                // "Ekle" düğmesine basıldığında yapılacak işlemler
+                                addStudentData()
                         }, label: {
                             Text("Ekle")
                                 .font(.title3)
@@ -43,7 +50,11 @@ struct StudentAdd: View {
             
             VStack{
                 ScrollView{
-                    
+                    ForEach(sendData.datas, id: \.self) { item in
+                                AddedStudent(name: item.name)
+                                    .padding()
+                    }
+
                 }
             }.padding()
         }.sheet(isPresented: $showCameraPicker) {
@@ -52,6 +63,21 @@ struct StudentAdd: View {
         }
     }
     
+    
+    // Öğrenci verilerini sunucuya gönderme işlemi
+        func addStudentData() {
+            // Öğrenci adını ve çekilen resmi sunucuya gönder
+            viewModel.addStudent(name: textName, image: capturedImage) { result in
+                switch result {
+                case .success:
+                    // Başarılı olduğunda yapılacak işlemler (örneğin, başarı mesajı göstermek veya UI'yi güncellemek)
+                    print("Öğrenci başarıyla eklendi")
+                case .failure(let error):
+                    // Hata durumunda yapılacak işlemler (örneğin, hata mesajı göstermek)
+                    print("Hata: \(error.localizedDescription)")
+                }
+            }
+        }
     
     @ViewBuilder
     static func CustomTextField(text: Binding<String>, placeHolder: String) -> some View{
