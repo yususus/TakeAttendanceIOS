@@ -14,7 +14,7 @@ struct StudentAdd: View {
     @State var textName: String
 
     @StateObject var sendData = SendData()
-    @StateObject var viewModel = StudentAddViewModel(apiURL: URL(string: "http://3.75.250.153:8000/uploadfile/1/")!)
+    @StateObject var serviceAdd = SendDatabase(apiURL: URL(string: "http://3.75.250.153:8000/uploadfile/1/")!)
     
     var body: some View {
         VStack{
@@ -41,7 +41,7 @@ struct StudentAdd: View {
                                 .font(.title3)
                                 .padding()
                                 .frame(width: 75, height: 35)
-                                .background(Color.gray)
+                                .background(Color.secondary)
                                 .foregroundColor(Color.white)
                                 .cornerRadius(4)
                             
@@ -67,7 +67,7 @@ struct StudentAdd: View {
     // Öğrenci verilerini sunucuya gönderme işlemi
         func addStudentData() {
             // Öğrenci adını ve çekilen resmi sunucuya gönder
-            viewModel.addStudent(name: textName, image: capturedImage) { result in
+            serviceAdd.addStudent(name: textName, image: capturedImage) { result in
                 switch result {
                 case .success:
                     // Başarılı olduğunda yapılacak işlemler (örneğin, başarı mesajı göstermek veya UI'yi güncellemek)
@@ -92,7 +92,7 @@ struct StudentAdd: View {
             }
             
         }.frame(width: 250, height: 50)
-            .background(Color.yellow.opacity(0.3))
+            .background(Color.green.opacity(0.3))
             .clipShape(.rect(cornerRadius: 10))
     }
 }

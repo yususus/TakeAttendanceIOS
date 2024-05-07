@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D91182BEAAB0C00D3213F /* ServiceSend.swift */; };
+		880D911E2BEAADC500D3213F /* TakenStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D911D2BEAADC500D3213F /* TakenStudent.swift */; };
+		880D91202BEAB02100D3213F /* StudentTaken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D911F2BEAB02100D3213F /* StudentTaken.swift */; };
 		8864EFE92BE775C400239DF7 /* AddedStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864EFE82BE775C400239DF7 /* AddedStudent.swift */; };
 		888D7FD62BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888D7FD52BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift */; };
 		888D7FD82BE6B3AE008C0FDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888D7FD72BE6B3AE008C0FDF /* ContentView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880D91182BEAAB0C00D3213F /* ServiceSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSend.swift; sourceTree = "<group>"; };
+		880D911D2BEAADC500D3213F /* TakenStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenStudent.swift; sourceTree = "<group>"; };
+		880D911F2BEAB02100D3213F /* StudentTaken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTaken.swift; sourceTree = "<group>"; };
 		8864EFE82BE775C400239DF7 /* AddedStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedStudent.swift; sourceTree = "<group>"; };
 		888D7FD22BE6B3AE008C0FDF /* TakeAttendanceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeAttendanceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		888D7FD52BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAttendanceIOSApp.swift; sourceTree = "<group>"; };
@@ -41,6 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		880D91172BEAAADD00D3213F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				880D91182BEAAB0C00D3213F /* ServiceSend.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		880D911A2BEAABC800D3213F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				880D911C2BEAAC1B00D3213F /* ViewFragments */,
+				8892E5122BE77973007488F2 /* StudentAdd.swift */,
+				880D911F2BEAB02100D3213F /* StudentTaken.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		880D911C2BEAAC1B00D3213F /* ViewFragments */ = {
+			isa = PBXGroup;
+			children = (
+				8864EFE82BE775C400239DF7 /* AddedStudent.swift */,
+				880D911D2BEAADC500D3213F /* TakenStudent.swift */,
+			);
+			path = ViewFragments;
+			sourceTree = "<group>";
+		};
 		888D7FC92BE6B3AE008C0FDF = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +93,14 @@
 		888D7FD42BE6B3AE008C0FDF /* TakeAttendanceIOS */ = {
 			isa = PBXGroup;
 			children = (
+				880D911A2BEAABC800D3213F /* View */,
+				880D91172BEAAADD00D3213F /* Service */,
 				88F28F612BE901040050BBAC /* Info.plist */,
-				888D7FD52BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift */,
 				888D7FD72BE6B3AE008C0FDF /* ContentView.swift */,
-				8864EFE82BE775C400239DF7 /* AddedStudent.swift */,
-				8892E5122BE77973007488F2 /* StudentAdd.swift */,
-				888D7FD92BE6B3AF008C0FDF /* Assets.xcassets */,
 				8892E5142BE81324007488F2 /* ViewModel.swift */,
 				8892E5162BE814FB007488F2 /* Enum.swift */,
+				888D7FD52BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift */,
+				888D7FD92BE6B3AF008C0FDF /* Assets.xcassets */,
 				888D7FDB2BE6B3AF008C0FDF /* Preview Content */,
 			);
 			path = TakeAttendanceIOS;
@@ -155,7 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880D91202BEAB02100D3213F /* StudentTaken.swift in Sources */,
+				880D911E2BEAADC500D3213F /* TakenStudent.swift in Sources */,
 				8892E5152BE81324007488F2 /* ViewModel.swift in Sources */,
+				880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */,
 				888D7FD82BE6B3AE008C0FDF /* ContentView.swift in Sources */,
 				8892E5172BE814FB007488F2 /* Enum.swift in Sources */,
 				888D7FD62BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift in Sources */,
