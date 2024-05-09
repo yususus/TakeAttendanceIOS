@@ -9,12 +9,17 @@ import SwiftUI
 
 struct StudentTaken: View {
     
+    @State private var showCamera = false
+    @State private var attendance: UIImage? = nil
+    
     @StateObject var recieveData = RecieveData()
     var body: some View {
         NavigationStack {
             VStack{
                 HStack {
-                    Button(action: {}, label: {
+                    Button(action: {
+                        showCamera = true
+                    }, label: {
                         Image(systemName: "person.crop.square.badge.camera")
                             .resizable().aspectRatio(contentMode: .fit)
                             .frame(width: 150)
@@ -41,7 +46,11 @@ struct StudentTaken: View {
                                     .padding()
                     }
                 }
-            }.navigationTitle("Yoklama Al")
+            }.sheet(isPresented: $showCamera) {
+                // Kamera picker'ını gösterin
+                ImagePicker(selectedImage: $attendance)
+        }
+            .navigationTitle("Yoklama Al")
         }
         
     }

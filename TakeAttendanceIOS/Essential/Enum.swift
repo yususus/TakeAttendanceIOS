@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum ErrorMessage: Int  {
     case emptyFields = 1
@@ -40,5 +41,25 @@ enum ErrorMessage: Int  {
         case.usernameError:
             return "Kullanıcı adı zaten kayıtlı"
         }
+    }
+}
+
+
+class CustomTextFieldPriv {
+    @ViewBuilder
+    static func CustomTextField(text: Binding<String>, placeHolder: String) -> some View{
+        VStack{
+            ZStack(alignment: .leading) {
+                if text.wrappedValue.isEmpty {
+                    Text(placeHolder)
+                        .foregroundColor(.black.opacity(0.6)).padding()
+                }
+                TextField("", text: text)
+                    .foregroundColor(.black).padding()
+            }
+            
+        }.frame(width: 250, height: 50)
+            .background(Color.green.opacity(0.3))
+            .clipShape(.rect(cornerRadius: 10))
     }
 }
