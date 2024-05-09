@@ -18,6 +18,7 @@
 		8892E5132BE77973007488F2 /* StudentAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892E5122BE77973007488F2 /* StudentAdd.swift */; };
 		8892E5152BE81324007488F2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892E5142BE81324007488F2 /* ViewModel.swift */; };
 		8892E5172BE814FB007488F2 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892E5162BE814FB007488F2 /* Enum.swift */; };
+		88CE102C2BED4CE200F36F0C /* ServiceRecieve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102B2BED4CE200F36F0C /* ServiceRecieve.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		8892E5122BE77973007488F2 /* StudentAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdd.swift; sourceTree = "<group>"; };
 		8892E5142BE81324007488F2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8892E5162BE814FB007488F2 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		88CE102B2BED4CE200F36F0C /* ServiceRecieve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRecieve.swift; sourceTree = "<group>"; };
 		88F28F612BE901040050BBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				880D91182BEAAB0C00D3213F /* ServiceSend.swift */,
+				88CE102B2BED4CE200F36F0C /* ServiceRecieve.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				8892E5152BE81324007488F2 /* ViewModel.swift in Sources */,
 				880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */,
 				888D7FD82BE6B3AE008C0FDF /* ContentView.swift in Sources */,
+				88CE102C2BED4CE200F36F0C /* ServiceRecieve.swift in Sources */,
 				8892E5172BE814FB007488F2 /* Enum.swift in Sources */,
 				888D7FD62BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift in Sources */,
 				8864EFE92BE775C400239DF7 /* AddedStudent.swift in Sources */,

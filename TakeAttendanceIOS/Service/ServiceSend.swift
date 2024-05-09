@@ -12,11 +12,9 @@ class SendDatabase : ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
 
-    private var apiURL: URL // API URL'sini burada belirtin
+    private let apiURL = URL(string: "http://3.75.250.153:8000/uploadfile/1/") // API URL'sini burada belirtin
 
-    init(apiURL: URL) {
-        self.apiURL = apiURL
-    }
+    
 
     func addStudent(name: String, image: UIImage?, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let imageData = image?.jpegData(compressionQuality: 0.8) else {
@@ -27,7 +25,7 @@ class SendDatabase : ObservableObject {
         isLoading = true
 
         // API isteği hazırlık
-        var request = URLRequest(url: apiURL)
+        var request = URLRequest(url: apiURL!)
         request.httpMethod = "POST"
 
         // Multi-part form verileri oluşturma

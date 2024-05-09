@@ -14,70 +14,74 @@ struct StudentAdd: View {
     @State var textName: String
 
     @StateObject var sendData = SendData()
-    @StateObject var serviceAdd = SendDatabase(apiURL: URL(string: "http://3.75.250.153:8000/uploadfile/1/")!)
+    @StateObject var serviceAdd = SendDatabase()
     
     var body: some View {
-        VStack{
-            HStack{
-                Button(action: {
-                    showCameraPicker = true
-                }, label: {
-                    Image(systemName: "camera.viewfinder")
-                        .resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 100,height: 100)
-                        .foregroundStyle(Color.black)
-                })
-                
-                StudentAdd.CustomTextField(text: $textName, placeHolder: "Öğrenci adını giriniz")
-            }.padding(10)
-                
-            
-            Button(action: {
-                           // action()
-                // "Ekle" düğmesine basıldığında yapılacak işlemler
-                                addStudentData()
-                        }, label: {
-                            Text("Ekle")
-                                .font(.title3)
-                                .padding()
-                                .frame(width: 75, height: 35)
-                                .background(Color.secondary)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(4)
-                            
-                        }).shadow(color: Color.black.opacity(0.5), radius: 5, x: 2, y: 2)
-            Spacer()
-            
+        NavigationStack {
             VStack{
-                ScrollView{
-                    ForEach(sendData.datas, id: \.self) { item in
-                                AddedStudent(name: item.name)
+                HStack{
+                    Button(action: {
+                        showCameraPicker = true
+                    }, label: {
+                        Image(systemName: "camera.viewfinder")
+                            .resizable().aspectRatio(contentMode: .fit)
+                            .frame(width: 100,height: 100)
+                            .foregroundStyle(Color.black)
+                    })
+                    
+                    StudentAdd.CustomTextField(text: $textName, placeHolder: "Öğrenci adını giriniz")
+                }.padding(10)
+                    
+                
+                Button(action: {
+                               // action()
+                    // "Ekle" düğmesine basıldığında yapılacak işlemler
+                                    addStudentData()
+                            }, label: {
+                                Text("Ekle")
+                                    .font(.title3)
                                     .padding()
-                    }
+                                    .frame(width: 75, height: 35)
+                                    .background(Color.secondary)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(4)
+                                
+                            }).shadow(color: Color.black.opacity(0.5), radius: 5, x: 2, y: 2)
+                Spacer()
+                
+                VStack{
+                    ScrollView{
+                        ForEach(sendData.datas, id: \.self) { item in
+                                    AddedStudent(name: item.name)
+                                        .padding()
+                        }
 
-                }
-            }.padding()
-        }.sheet(isPresented: $showCameraPicker) {
-            // Kamera picker'ını gösterin
-            ImagePicker(selectedImage: $capturedImage)
+                    }
+                }.padding()
+                    
+            }.sheet(isPresented: $showCameraPicker) {
+                // Kamera picker'ını gösterin
+                ImagePicker(selectedImage: $capturedImage)
         }
+            .navigationTitle("Öğrenci Ekle")
+        }
+        
     }
     
     
     // Öğrenci verilerini sunucuya gönderme işlemi
-        func addStudentData() {
-            // Öğrenci adını ve çekilen resmi sunucuya gönder
-            serviceAdd.addStudent(name: textName, image: capturedImage) { result in
-                switch result {
-                case .success:
-                    // Başarılı olduğunda yapılacak işlemler (örneğin, başarı mesajı göstermek veya UI'yi güncellemek)
-                    print("Öğrenci başarıyla eklendi")
-                case .failure(let error):
-                    // Hata durumunda yapılacak işlemler (örneğin, hata mesajı göstermek)
-                    print("Hata: \(error.localizedDescription)")
-                }
+    func addStudentData() {
+        // Öğrenci adını ve çekilen resmi sunucuya gönder
+        serviceAdd.addStudent(name: textName, image: capturedImage) { result in
+            switch result {
+            case .success:
+                print("Öğrenci başarıyla eklendi")
+            case .failure(let error):
+                print("Hata: \(error.localizedDescription)")
             }
         }
+    }
+        
     
     @ViewBuilder
     static func CustomTextField(text: Binding<String>, placeHolder: String) -> some View{
