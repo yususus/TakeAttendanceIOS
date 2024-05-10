@@ -6,3 +6,7 @@
 //
 
 import Foundation
+struct Config{
+    
+    static let apiUrl = "https://api2.mustafagordesli.com.tr:2087/uploadfile/1"
+}

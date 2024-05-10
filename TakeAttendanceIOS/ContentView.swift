@@ -15,10 +15,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("Yoklama Al", systemImage: "person.fill.questionmark")
                     }
+                    
                 StudentAdd(textName: "")
                     .tabItem {
                         Label("Öğrenci Ekle", systemImage: "person.badge.plus.fill")
+                            
                     }
+                    
             }
         
     }
