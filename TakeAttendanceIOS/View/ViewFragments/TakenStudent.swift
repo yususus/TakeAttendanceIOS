@@ -17,10 +17,10 @@ struct TakenStudent: View {
                 Text(student)
                 Spacer()
                 Image(systemName: "checkmark.circle").resizable().aspectRatio(contentMode: .fit).frame(height: 30).foregroundStyle(Color.green)
-                Image(systemName: "wrongwaysign").resizable().aspectRatio(contentMode: .fit).frame(height: 30).foregroundStyle(Color.red)
+                //Image(systemName: "wrongwaysign").resizable().aspectRatio(contentMode: .fit).frame(height: 30).foregroundStyle(Color.red)
                 //checkmark.circle
                 //wrongwaysign
-            }.padding().frame(width: 300, height: 50)
+            }.padding().frame(width: 350, height: 50)
                 .background(Color.cyan.opacity(0.25))
                 .clipShape(.rect(cornerRadius: 10))
         }

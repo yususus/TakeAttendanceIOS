@@ -13,21 +13,24 @@ import SwiftUI
 
 
 
-struct dataType: Identifiable, Hashable{
-    var id: String
-    var name : String
-    var image : String
-    
+class SendData: ObservableObject {
+    @Published var datas: [StudentData] = [] // Öğrenci verilerini tutacak özellik
+
+    // Öğrenci ekleme işlemi
+    func addStudent(name: String, photoPath: String) {
+        let newStudent = StudentData(name: name, image: photoPath)
+        datas.append(newStudent)
+    }
 }
 
-
-
-class SendData: ObservableObject{
-    @Published var datas = [dataType]()
+struct StudentData: Identifiable, Hashable {
+    var id = UUID() // Öğrenci kimliği
+    var name: String // Öğrenci adı
+    var image: String // Öğrenci fotoğrafı yolu
 }
 
 
 class RecieveData: ObservableObject{
-    @Published var datas = [dataType]()
+    @Published var datas = [StudentData]()
 }
 

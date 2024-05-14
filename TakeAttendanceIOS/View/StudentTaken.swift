@@ -22,27 +22,31 @@ struct StudentTaken: View {
                     }, label: {
                         Image(systemName: "person.crop.square.badge.camera")
                             .resizable().aspectRatio(contentMode: .fit)
-                            .frame(width: 150)
-                            .foregroundStyle(Color.green.opacity(0.8))
-                    })
+                            .frame(width: 100)
+                            .foregroundStyle(Color.white)
+                    }).frame(width: 120, height: 120)
+                        .background(Color(uiColor: UIColor(hex: "7AB2B2"))).clipShape(.rect(cornerRadius: 10, style: .continuous)).shadow(radius: 10)
+                    Divider().frame(height: 100).frame(minWidth: 0.5).background(Color.black)
                     Spacer()
                     Button(action: {}, label: {
-                        Text("Scan")
-                            .frame(width: 100,height: 50)
+                        Text("Start Scan")
                             .font(.title3)
                             .padding()
-                            .frame(width: 75, height: 35)
-                            .background(Color.secondary)
+                            .frame(width: 140, height: 45)
                             .foregroundColor(Color.white)
+                            .background(Color(uiColor: UIColor(hex: "4D869C")))
                             .cornerRadius(4)
-                    })
-                }.padding(.horizontal, 50)
-                
+                    }).shadow(color: Color.black.opacity(0.5), radius: 5, x: 2, y: 2)
+                }.padding(.horizontal, 40)
+                    .frame(width: 400)
+                    
+                    
+                Divider().frame(width: 350).frame(minHeight: 2).background(Color.black)
                 
                 ScrollView{
                     //TakenStudent(student: "yusuf")
                     ForEach(recieveData.datas, id: \.self) { item in
-                        TakenStudent(student: item.name)
+                        TakenStudent(student: "")
                                     .padding()
                     }
                 }
