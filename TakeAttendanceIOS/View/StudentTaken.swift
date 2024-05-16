@@ -12,7 +12,7 @@ struct StudentTaken: View {
     @State private var showCamera = false
     @State private var attendance: UIImage? = nil
     
-    @StateObject var recieveData = RecieveData()
+    //@StateObject var recieveData = RecieveData()
     var body: some View {
         NavigationStack {
             VStack{

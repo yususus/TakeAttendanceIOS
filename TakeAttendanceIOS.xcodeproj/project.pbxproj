@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880A7A642BF6337F0044268C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 880A7A632BF6337F0044268C /* SwiftyJSON */; };
+		880A7A662BF639720044268C /* ServiceGetScanPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880A7A652BF639720044268C /* ServiceGetScanPhoto.swift */; };
 		880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D91182BEAAB0C00D3213F /* ServiceSend.swift */; };
 		880D911E2BEAADC500D3213F /* TakenStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D911D2BEAADC500D3213F /* TakenStudent.swift */; };
 		880D91202BEAB02100D3213F /* StudentTaken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D911F2BEAB02100D3213F /* StudentTaken.swift */; };
@@ -20,12 +22,12 @@
 		8892E5172BE814FB007488F2 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892E5162BE814FB007488F2 /* Enum.swift */; };
 		88C9D4262BEE3E9600E31489 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9D4252BEE3E9600E31489 /* Config.swift */; };
 		88CB6BD22BF288BE003EBB49 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88CB6BD12BF288BE003EBB49 /* SDWebImageSwiftUI */; };
-		88CE102C2BED4CE200F36F0C /* ServiceGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102B2BED4CE200F36F0C /* ServiceGet.swift */; };
+		88CE102C2BED4CE200F36F0C /* ServiceGetAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102B2BED4CE200F36F0C /* ServiceGetAdded.swift */; };
 		88CE102E2BED5DBE00F36F0C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102D2BED5DBE00F36F0C /* ImagePicker.swift */; };
-		88EA87E02BF361DE00AA94CB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880A7A652BF639720044268C /* ServiceGetScanPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceGetScanPhoto.swift; sourceTree = "<group>"; };
 		880D91182BEAAB0C00D3213F /* ServiceSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSend.swift; sourceTree = "<group>"; };
 		880D911D2BEAADC500D3213F /* TakenStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenStudent.swift; sourceTree = "<group>"; };
 		880D911F2BEAB02100D3213F /* StudentTaken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTaken.swift; sourceTree = "<group>"; };
@@ -39,9 +41,8 @@
 		8892E5142BE81324007488F2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8892E5162BE814FB007488F2 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		88C9D4252BEE3E9600E31489 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		88CE102B2BED4CE200F36F0C /* ServiceGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceGet.swift; sourceTree = "<group>"; };
+		88CE102B2BED4CE200F36F0C /* ServiceGetAdded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceGetAdded.swift; sourceTree = "<group>"; };
 		88CE102D2BED5DBE00F36F0C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		88F28F612BE901040050BBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880A7A642BF6337F0044268C /* SwiftyJSON in Frameworks */,
 				88CB6BD22BF288BE003EBB49 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,8 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				880D91182BEAAB0C00D3213F /* ServiceSend.swift */,
-				88CE102B2BED4CE200F36F0C /* ServiceGet.swift */,
-				88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */,
+				88CE102B2BED4CE200F36F0C /* ServiceGetAdded.swift */,
+				880A7A652BF639720044268C /* ServiceGetScanPhoto.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -154,6 +156,7 @@
 			name = TakeAttendanceIOS;
 			packageProductDependencies = (
 				88CB6BD12BF288BE003EBB49 /* SDWebImageSwiftUI */,
+				880A7A632BF6337F0044268C /* SwiftyJSON */,
 			);
 			productName = TakeAttendanceIOS;
 			productReference = 888D7FD22BE6B3AE008C0FDF /* TakeAttendanceIOS.app */;
@@ -185,6 +188,7 @@
 			mainGroup = 888D7FC92BE6B3AE008C0FDF;
 			packageReferences = (
 				88CB6BD02BF288BE003EBB49 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				880A7A622BF6337F0044268C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 888D7FD32BE6B3AE008C0FDF /* Products */;
 			projectDirPath = "";
@@ -212,14 +216,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880A7A662BF639720044268C /* ServiceGetScanPhoto.swift in Sources */,
 				880D91202BEAB02100D3213F /* StudentTaken.swift in Sources */,
 				880D911E2BEAADC500D3213F /* TakenStudent.swift in Sources */,
 				8892E5152BE81324007488F2 /* ViewModel.swift in Sources */,
-				88EA87E02BF361DE00AA94CB /* UserDefaultsManager.swift in Sources */,
 				880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */,
 				888D7FD82BE6B3AE008C0FDF /* ContentView.swift in Sources */,
 				88C9D4262BEE3E9600E31489 /* Config.swift in Sources */,
-				88CE102C2BED4CE200F36F0C /* ServiceGet.swift in Sources */,
+				88CE102C2BED4CE200F36F0C /* ServiceGetAdded.swift in Sources */,
 				8892E5172BE814FB007488F2 /* Enum.swift in Sources */,
 				88CE102E2BED5DBE00F36F0C /* ImagePicker.swift in Sources */,
 				888D7FD62BE6B3AE008C0FDF /* TakeAttendanceIOSApp.swift in Sources */,
@@ -438,6 +442,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		880A7A622BF6337F0044268C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		88CB6BD02BF288BE003EBB49 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -449,6 +461,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		880A7A632BF6337F0044268C /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 880A7A622BF6337F0044268C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		88CB6BD12BF288BE003EBB49 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 88CB6BD02BF288BE003EBB49 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

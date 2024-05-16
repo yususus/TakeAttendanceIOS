@@ -1,23 +1,22 @@
 //
-//  ServiceSend.swift
+//  ServiceGetScanPhoto.swift
 //  TakeAttendanceIOS
 //
-//  Created by yusuf on 7.05.2024.
+//  Created by yusuf on 16.05.2024.
 //
 
 import Foundation
-import SwiftUI
+import UIKit
 
-class SendDatabase : ObservableObject {
+
+class GetScanPhoto : ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
-    @Published var photoPath: String? = nil // Fotoğraf path'ini saklamak için
+    @Published var numbers: String? = nil // taranan numaralar
     
-    private let apiURL = URL(string: Config.apiUrl)
+    private let apiURL = URL(string: Config.ScanPerson)
     
-    
-    
-    func addStudent(name: String, image: UIImage?, completion: @escaping (Result<Void, Error>) -> Void) {
+    func ScanStudent(image: UIImage?, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let imageData = image?.jpegData(compressionQuality: 0.8) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Resim seçimi başarısız oldu."])))
             return
@@ -35,15 +34,8 @@ class SendDatabase : ObservableObject {
 
         var body = Data()
 
-        // Metin alanını ekleme
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"name\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(name)\r\n".data(using: .utf8)!)
-
-        // Benzersiz bir dosya adı oluşturma
-        let fileName = UUID().uuidString + ".jpg"
-
         // Resim dosyasını ekleme
+        let fileName = UUID().uuidString + ".jpg"
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
         body.append("Content-Type: image/jpg\r\n\r\n".data(using: .utf8)!)
@@ -56,7 +48,6 @@ class SendDatabase : ObservableObject {
         // HTTP body'yi isteğe ekleme
         request.httpBody = body
 
-        
         // URLSession ile API isteği gönderme
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
@@ -82,14 +73,13 @@ class SendDatabase : ObservableObject {
                                 // Sunucunun döndürdüğü `success` değerini kontrol et
                                 if let success = jsonResponse?["success"] as? Bool {
                                     if success {
-                                        // İşlem başarılıysa path'i al
-                                        // Verileri kaydetme
-                                        if let path = jsonResponse?["path"] as? String {
-                                            print("Fotoğrafın yüklendiği path: \(path)")
+                                        // İşlem başarılıysa numaraları al
+                                            if let number = jsonResponse?["number"] as? String {
+                                            print("sunucudan dönen numaralar: \(number)")
                                             completion(.success(()))
                                         } else {
-                                            // Path anahtarı bulunamazsa genel bir hata mesajı
-                                            let errorMessage = "Sunucudan dönen path bulunamadı."
+                                            // numara bulunamazsa genel bir hata mesajı
+                                            let errorMessage = "Sunucudan dönen numaralar bulunamadı."
                                             self.errorMessage = errorMessage
                                             completion(.failure(NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
                                         }

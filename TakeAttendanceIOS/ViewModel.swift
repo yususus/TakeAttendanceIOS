@@ -8,42 +8,28 @@
 import Foundation
 import SwiftUI
 
+//get database for added student
+struct PersonAdded: Decodable {
+    let articles: [PersonInformation]
+}
 
-
-
-
-
-class SendData: ObservableObject {
-    @Published var datas: [StudentData] = [] // Öğrenci verilerini tutacak özellik
-
-    // Öğrenci ekleme işlemi
-    func addStudent(name: String, photoPath: String) {
-        let newStudent = StudentData(name: name, image: photoPath)
-        datas.append(newStudent)
-    }
+struct PersonInformation: Decodable {
+    let number: String?
+    let urlToImage: String?
+    let publishedAt: String?
+}
     
-    // UserDefaults'tan kaydedilen verileri döndüren fonksiyon
-        func getStoredStudentData() -> StudentData? {
-            // UserDefaults'tan kaydedilen verileri alma
-            let (storedName, storedPhotoPath) = UserDefaultsManager.shared.getStudentData()
-            
-            // Eğer veriler varsa StudentData yapısına dönüştürerek döndür
-            if let name = storedName, let photoPath = storedPhotoPath {
-                return StudentData(name: name, image: photoPath)
-            } else {
-                return nil // Veri yoksa nil döndür
-            }
-        }
+struct dataType: Identifiable, Hashable{
+    var id: String
+    var number : String
+    var image : String
+    
 }
 
-struct StudentData: Identifiable, Hashable {
-    var id = UUID() // Öğrenci kimliği
-    var name: String // Öğrenci adı
-    var image: String // Öğrenci fotoğrafı yolu
-}
+//  
 
 
-class RecieveData: ObservableObject{
-    @Published var datas = [StudentData]()
-}
+
+
+
 

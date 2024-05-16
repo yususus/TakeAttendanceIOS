@@ -1,5 +1,5 @@
 {
-  "originHash" : "340b5769b12264d5a5578c5775a9e7764df7ea9b4bddf25d1c3bd13d3f6a06a3",
+  "originHash" : "e84fd83a45d7e90c73a5f3c96eeda190976dfacba42593a63bb587b140eb2332",
   "pins" : [
     {
       "identity" : "sdwebimage",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "b7af5e6bd9c2987e41730400d1baad13d74a141a",
         "version" : "3.0.4"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON.git",
+      "state" : {
+        "revision" : "af76cf3ef710b6ca5f8c05f3a31307d44a3c5828",
+        "version" : "5.0.2"
       }
     }
   ],

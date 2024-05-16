@@ -13,8 +13,9 @@ struct StudentAdd: View {
     @State private var student: UIImage? = nil
     @State var textName: String
     
-    @StateObject var sendData = SendData()
+    
     @StateObject var serviceSend = SendDatabase()
+    @StateObject var getData = GetDataBase()
     
     
     var body: some View {
@@ -52,15 +53,10 @@ struct StudentAdd: View {
                 VStack{
                     ScrollView {
                         // UserDefault öğrenci verisini al
-                        if let storedStudentData = sendData.getStoredStudentData() {
-                            AddedStudent(name: storedStudentData.name, photoURL: storedStudentData.image)
+                        ForEach(getData.datas, id: \.self) { item in
+                            AddedStudent(name: item.number, photoURL: item.image)
                                 .padding()
                         }
-                        /*
-                        ForEach(sendData.datas, id: \.self) { item in
-                            AddedStudent(name: item.name, photoURL: Config.addPathToApiUrl2(path: item.image))
-                                .padding()
-                        }*/
                     }
                 }.padding()
                 
@@ -97,15 +93,3 @@ struct StudentAdd: View {
  AddedStudent(name: "ali", photoURL: "099504a4-3c51-4356-b595-bb2c3e8028abA06A19F2-4292-4DFD-BBE2-EE0A6911CD1D.jpg")
  */
 
-
-
-/*
- // UserDefaults'tan kaydedilen verileri alma
- let (storedName, storedPhotoPath) = UserDefaultsManager.shared.getStudentData()
- 
- // UserDefaults'tan verileri alıp kullanarak öğeleri oluşturma
- if let name = storedName, let photoPath = storedPhotoPath {
- AddedStudent(name: name, photoURL: photoPath)
- }
- 
- */
