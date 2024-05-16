@@ -45,10 +45,7 @@ struct StudentTaken: View {
                 
                 ScrollView{
                     //TakenStudent(student: "yusuf")
-                    ForEach(recieveData.datas, id: \.self) { item in
-                        TakenStudent(student: "")
-                                    .padding()
-                    }
+                    
                 }
             }.sheet(isPresented: $showCamera) {
                 // Kamera picker'ını gösterin

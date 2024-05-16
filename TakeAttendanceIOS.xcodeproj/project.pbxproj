@@ -22,6 +22,7 @@
 		88CB6BD22BF288BE003EBB49 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88CB6BD12BF288BE003EBB49 /* SDWebImageSwiftUI */; };
 		88CE102C2BED4CE200F36F0C /* ServiceGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102B2BED4CE200F36F0C /* ServiceGet.swift */; };
 		88CE102E2BED5DBE00F36F0C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE102D2BED5DBE00F36F0C /* ImagePicker.swift */; };
+		88EA87E02BF361DE00AA94CB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		88C9D4252BEE3E9600E31489 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		88CE102B2BED4CE200F36F0C /* ServiceGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceGet.swift; sourceTree = "<group>"; };
 		88CE102D2BED5DBE00F36F0C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		88F28F612BE901040050BBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +62,7 @@
 			children = (
 				880D91182BEAAB0C00D3213F /* ServiceSend.swift */,
 				88CE102B2BED4CE200F36F0C /* ServiceGet.swift */,
+				88EA87DF2BF361DE00AA94CB /* UserDefaultsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				880D91202BEAB02100D3213F /* StudentTaken.swift in Sources */,
 				880D911E2BEAADC500D3213F /* TakenStudent.swift in Sources */,
 				8892E5152BE81324007488F2 /* ViewModel.swift in Sources */,
+				88EA87E02BF361DE00AA94CB /* UserDefaultsManager.swift in Sources */,
 				880D91192BEAAB0C00D3213F /* ServiceSend.swift in Sources */,
 				888D7FD82BE6B3AE008C0FDF /* ContentView.swift in Sources */,
 				88C9D4262BEE3E9600E31489 /* Config.swift in Sources */,

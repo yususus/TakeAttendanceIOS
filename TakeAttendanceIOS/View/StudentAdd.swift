@@ -47,16 +47,20 @@ struct StudentAdd: View {
                     }
                     
                 }.padding(10)
-                    
+                
                 
                 VStack{
-                    ScrollView{
-                        AddedStudent(name: "dadas", photoURL: "asd")
+                    ScrollView {
+                        // UserDefault öğrenci verisini al
+                        if let storedStudentData = sendData.getStoredStudentData() {
+                            AddedStudent(name: storedStudentData.name, photoURL: storedStudentData.image)
+                                .padding()
+                        }
+                        /*
                         ForEach(sendData.datas, id: \.self) { item in
                             AddedStudent(name: item.name, photoURL: Config.addPathToApiUrl2(path: item.image))
-                                        .padding()
-                        }
-                        
+                                .padding()
+                        }*/
                     }
                 }.padding()
                 
@@ -89,6 +93,19 @@ struct StudentAdd: View {
 }
 
 /*
-AddedStudent(name: "yusuf", photoURL: "af52277e-a1ff-4d00-92e0-7f3a35706ec63BB57CFC-6E5A-4248-B408-67F622EA518B.jpg")
-AddedStudent(name: "ali", photoURL: "099504a4-3c51-4356-b595-bb2c3e8028abA06A19F2-4292-4DFD-BBE2-EE0A6911CD1D.jpg")
-*/
+ AddedStudent(name: "yusuf", photoURL: "af52277e-a1ff-4d00-92e0-7f3a35706ec63BB57CFC-6E5A-4248-B408-67F622EA518B.jpg")
+ AddedStudent(name: "ali", photoURL: "099504a4-3c51-4356-b595-bb2c3e8028abA06A19F2-4292-4DFD-BBE2-EE0A6911CD1D.jpg")
+ */
+
+
+
+/*
+ // UserDefaults'tan kaydedilen verileri alma
+ let (storedName, storedPhotoPath) = UserDefaultsManager.shared.getStudentData()
+ 
+ // UserDefaults'tan verileri alıp kullanarak öğeleri oluşturma
+ if let name = storedName, let photoPath = storedPhotoPath {
+ AddedStudent(name: name, photoURL: photoPath)
+ }
+ 
+ */

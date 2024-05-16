@@ -21,6 +21,19 @@ class SendData: ObservableObject {
         let newStudent = StudentData(name: name, image: photoPath)
         datas.append(newStudent)
     }
+    
+    // UserDefaults'tan kaydedilen verileri döndüren fonksiyon
+        func getStoredStudentData() -> StudentData? {
+            // UserDefaults'tan kaydedilen verileri alma
+            let (storedName, storedPhotoPath) = UserDefaultsManager.shared.getStudentData()
+            
+            // Eğer veriler varsa StudentData yapısına dönüştürerek döndür
+            if let name = storedName, let photoPath = storedPhotoPath {
+                return StudentData(name: name, image: photoPath)
+            } else {
+                return nil // Veri yoksa nil döndür
+            }
+        }
 }
 
 struct StudentData: Identifiable, Hashable {

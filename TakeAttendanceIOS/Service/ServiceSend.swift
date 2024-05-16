@@ -83,12 +83,11 @@ class SendDatabase : ObservableObject {
                                 if let success = jsonResponse?["success"] as? Bool {
                                     if success {
                                         // İşlem başarılıysa path'i al
+                                        // Verileri kaydetme
                                         if let path = jsonResponse?["path"] as? String {
-                                            // Path alındı, bunu uygun şekilde kullanın
-                                            self.photoPath = path
+                                            // UserDefaultsManager kullanarak verileri kaydetme
+                                            UserDefaultsManager.shared.saveStudentData(name: name, photoPath: path)
                                             print("Fotoğrafın yüklendiği path: \(path)")
-                                            // Path'i uygun bir şekilde işle
-                                            // Örneğin, kullanıcıya başarı mesajı gösterilebilir veya path saklanabilir
                                             completion(.success(()))
                                         } else {
                                             // Path anahtarı bulunamazsa genel bir hata mesajı
