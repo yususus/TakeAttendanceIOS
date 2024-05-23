@@ -44,5 +44,5 @@ struct AddedStudent: View {
 }
 
 #Preview {
-    AddedStudent(name: "Yusuf aydın", photoURL: "af52277e-a1ff-4d00-92e0-7f3a35706ec63BB57CFC-6E5A-4248-B408-67F622EA518B.jpg")
+    AddedStudent(name: "Yusuf aydın", photoURL: "07068c04-b8f9-48b6-90e9-d5b6dc64ecc1IMG_1387.jpg")
 }

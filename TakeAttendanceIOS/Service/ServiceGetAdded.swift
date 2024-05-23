@@ -12,43 +12,43 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 import SDWebImageSwiftUI
+import Combine
 
-
-class GetDataBase : ObservableObject {
-    @Published var datas = [dataType]()
+class GetDataBase: ObservableObject {
+    @Published var datas = [PersonInformation]()
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
     
-    func fetchData(for category: String) {
-        guard let url = URL(string: Config.getPerson) else {
-            print("Invalid URL")
-            return
+    private let apiURL = URL(string: "http://35.193.152.202:8000/student")!
+    
+    func fetchData() {
+        isLoading = true
+        errorMessage = nil
+        
+        let task = URLSession.shared.dataTask(with: apiURL) { data, response, error in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                
+                if let error = error {
+                    self.errorMessage = error.localizedDescription
+                    return
+                }
+                
+                guard let data = data else {
+                    self.errorMessage = "No data returned from server"
+                    return
+                }
+                
+                do {
+                    let response = try JSONDecoder().decode([PersonInformation].self, from: data)
+                    self.datas = response
+                } catch {
+                    self.errorMessage = "Failed to decode JSON: \(error.localizedDescription)"
+                }
+            }
         }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data else {
-                print("No data returned from API")
-                return
-            }
-            
-            do {
-                let response = try JSONDecoder().decode(PersonAdded.self, from: data)
-                DispatchQueue.main.async {
-                    self.datas = response.articles.map {
-                        dataType(
-                            id: $0.publishedAt ?? "",
-                            number: $0.number ?? "",
-                            image: $0.urlToImage ?? ""
-                        )
-                    }
-                }
-            } catch {
-                print("Error decoding JSON: \(error.localizedDescription)")
-            }
-        }.resume()
+        task.resume()
     }
 }
 

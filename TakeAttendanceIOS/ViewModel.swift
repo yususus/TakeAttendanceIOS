@@ -13,18 +13,23 @@ struct PersonAdded: Decodable {
     let articles: [PersonInformation]
 }
 
-struct PersonInformation: Decodable {
-    let number: String?
-    let urlToImage: String?
-    let publishedAt: String?
+struct PersonInformation: Codable, Identifiable {
+    let id: Int
+    let no, imageURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, no
+        case imageURL = "imageUrl"
+    }
 }
-    
-struct dataType: Identifiable, Hashable{
-    var id: String
-    var number : String
-    var image : String
-    
+
+
+struct DataType: Identifiable {
+    let id: Int
+    let number: String
+    let image: String
 }
+
 
 //  
 

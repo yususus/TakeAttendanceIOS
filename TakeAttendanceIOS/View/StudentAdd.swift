@@ -34,7 +34,14 @@ struct StudentAdd: View {
                     VStack {
                         CustomTextFieldPriv.CustomTextField(text: $textName, placeHolder: "Öğrenci numarasını giriniz")
                         Button(action: {
-                            addStudentData()
+                            serviceSend.addStudent(name: textName, image: student) { result in
+                                switch result {
+                                case .success:
+                                    print("Öğrenci başarıyla eklendi")
+                                case .failure(let error):
+                                    print("Hata: \(error.localizedDescription)")
+                                }
+                            }
                         }, label: {
                             Text("Ekle")
                                 .font(.title3)
@@ -51,11 +58,18 @@ struct StudentAdd: View {
                 
                 
                 VStack{
-                    ScrollView {
-                        // UserDefault öğrenci verisini al
-                        ForEach(getData.datas, id: \.self) { item in
-                            AddedStudent(name: item.number, photoURL: item.image)
-                                .padding()
+                    List(getData.datas) { person in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                
+                                Text("\(person.no)")
+                            }
+                            Spacer()
+                            if let imageURL = URL(string: "\(Config.getPerson)\(person.imageURL)") {
+                                AsyncImage(url: imageURL)
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                            }
                         }
                     }
                 }.padding()
@@ -65,21 +79,16 @@ struct StudentAdd: View {
                 ImagePicker(selectedImage: $student)
             }
             .navigationTitle("Öğrenci Ekle")
-        }
-        
-    }
-    
-    
-    // Öğrenci verilerini sunucuya gönderme işlemi
-    func addStudentData() {
-        // Öğrenci adını ve çekilen resmi sunucuya gönder
-        serviceSend.addStudent(name: textName, image: student) { result in
-            switch result {
-            case .success:
-                print("Öğrenci başarıyla eklendi")
-            case .failure(let error):
-                print("Hata: \(error.localizedDescription)")
-            }
+            .onAppear {
+                            getData.fetchData()
+                        }
+                        .alert(isPresented: .constant(getData.errorMessage != nil)) {
+                            Alert(
+                                title: Text("Error"),
+                                message: Text(getData.errorMessage ?? "Unknown error"),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        }
         }
     }
 }

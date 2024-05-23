@@ -7,15 +7,16 @@
 
 import Foundation
 import SwiftUI
+import Combine
+import UIKit
 
-class SendDatabase : ObservableObject {
+class SendDatabase: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
-    @Published var photoPath: String? = nil // Fotoğraf path'ini saklamak için
     
-    private let apiURL = URL(string: Config.apiUrl)
-    
-    
+    private var apiURL: URL {
+        return URL(string: Config.apiUrl)!
+    }
     
     func addStudent(name: String, image: UIImage?, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let imageData = image?.jpegData(compressionQuality: 0.8) else {
@@ -25,8 +26,17 @@ class SendDatabase : ObservableObject {
         
         isLoading = true
         
+        // URL bileşenleri ile name parametresini ekleme
+        var components = URLComponents(url: apiURL, resolvingAgainstBaseURL: false)!
+        components.queryItems = [URLQueryItem(name: "name", value: name)]
+        
+        guard let urlWithQuery = components.url else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "URL bileşenleri oluşturulamadı."])))
+            return
+        }
+        
         // API isteği hazırlık
-        var request = URLRequest(url: apiURL!)
+        var request = URLRequest(url: urlWithQuery)
         request.httpMethod = "POST"
 
         // Multi-part form verileri oluşturma
@@ -34,11 +44,6 @@ class SendDatabase : ObservableObject {
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         var body = Data()
-
-        // Metin alanını ekleme
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"name\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(name)\r\n".data(using: .utf8)!)
 
         // Benzersiz bir dosya adı oluşturma
         let fileName = UUID().uuidString + ".jpg"
@@ -56,7 +61,6 @@ class SendDatabase : ObservableObject {
         // HTTP body'yi isteğe ekleme
         request.httpBody = body
 
-        
         // URLSession ile API isteği gönderme
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
@@ -64,8 +68,8 @@ class SendDatabase : ObservableObject {
                 
                 // Hata varsa işlemi tamamla
                 if let error = error {
-                    completion(.failure(error))
                     self.errorMessage = error.localizedDescription
+                    completion(.failure(error))
                     return
                 }
                 
@@ -81,18 +85,12 @@ class SendDatabase : ObservableObject {
                                 
                                 // Sunucunun döndürdüğü `success` değerini kontrol et
                                 if let success = jsonResponse?["success"] as? Bool {
+                                    // Success değerini yazdır
+                                    print("Success: \(success)")
+                                    
                                     if success {
-                                        // İşlem başarılıysa path'i al
-                                        // Verileri kaydetme
-                                        if let path = jsonResponse?["path"] as? String {
-                                            print("Fotoğrafın yüklendiği path: \(path)")
-                                            completion(.success(()))
-                                        } else {
-                                            // Path anahtarı bulunamazsa genel bir hata mesajı
-                                            let errorMessage = "Sunucudan dönen path bulunamadı."
-                                            self.errorMessage = errorMessage
-                                            completion(.failure(NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
-                                        }
+                                        // İşlem başarılıysa
+                                        completion(.success(()))
                                     } else {
                                         // İşlem başarısızsa genel bir hata mesajı göster
                                         let errorMessage = "İşlem başarısız oldu."
@@ -129,3 +127,4 @@ class SendDatabase : ObservableObject {
         task.resume()
     }
 }
+
