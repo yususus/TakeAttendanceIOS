@@ -24,11 +24,7 @@ struct PersonInformation: Codable, Identifiable {
 }
 
 
-struct DataType: Identifiable {
-    let id: Int
-    let number: String
-    let image: String
-}
+
 
 
 //  
