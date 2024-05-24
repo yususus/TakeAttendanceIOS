@@ -34,7 +34,7 @@ struct StudentAdd: View {
                     VStack {
                         CustomTextFieldPriv.CustomTextField(text: $textName, placeHolder: "Öğrenci numarasını giriniz")
                         Button(action: {
-                            serviceSend.addStudent(name: textName, image: student) { result in
+                            serviceSend.addStudent(name: "/\(textName)", image: student) { result in
                                 switch result {
                                 case .success:
                                     print("Öğrenci başarıyla eklendi")
@@ -59,20 +59,9 @@ struct StudentAdd: View {
                 
                 VStack{
                     List(getData.datas) { person in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                
-                                Text("\(person.no)")
-                            }
-                            Spacer()
-                            if let imageURL = URL(string: "\(Config.getPerson)\(person.imageURL)") {
-                                AsyncImage(url: imageURL)
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                            }
-                        }
+                        AddedStudent(name: "\(person.no)", photoURL: "\(Config.getPerson)\(person.imageURL)")
                     }
-                }.padding()
+                }
                 
             }.sheet(isPresented: $showCameraPicker) {
                 // Kamera picker'ını gösterin

@@ -26,17 +26,11 @@ class SendDatabase: ObservableObject {
         
         isLoading = true
         
-        // URL bileşenleri ile name parametresini ekleme
-        var components = URLComponents(url: apiURL, resolvingAgainstBaseURL: false)!
-        components.queryItems = [URLQueryItem(name: "name", value: name)]
-        
-        guard let urlWithQuery = components.url else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "URL bileşenleri oluşturulamadı."])))
-            return
-        }
+        // name parametresini URL yoluna ekleme
+        let apiUrlWithPath = apiURL.appendingPathComponent(name)
         
         // API isteği hazırlık
-        var request = URLRequest(url: urlWithQuery)
+        var request = URLRequest(url: apiUrlWithPath)
         request.httpMethod = "POST"
 
         // Multi-part form verileri oluşturma
@@ -126,5 +120,6 @@ class SendDatabase: ObservableObject {
         }
         task.resume()
     }
+
 }
 
