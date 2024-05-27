@@ -75,7 +75,7 @@ class GetScanPhoto: ObservableObject {
                         self.students = students
                         completion(.success(()))
                     } else {
-                        let errorMessage = "Sunucudan geçersiz yanıt alındı: Öğrenci verileri eksik veya boş."
+                        let errorMessage = " Öğrenci verileri eksik veya boş."
                         self.errorMessage = errorMessage
                         completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
                     }
